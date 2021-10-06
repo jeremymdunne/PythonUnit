@@ -5,30 +5,30 @@
 #   @date October, 2021
 
 
-import Units
+import easyunits
 
 ### creating and getting data
 # try a blank
-blank = Units.ValueWithUnits()
+blank = easyunits.ValueWithUnits()
 blank_value, blank_unit = blank.getValue()
 print("Blank Value: " + str(blank_value) + ' ' + str(blank_unit))
 # try a real unit
-inch = Units.ValueWithUnits(12.3,'inches')
+inch = easyunits.ValueWithUnits(12.3,'inches')
 inch_value, inch_unit = inch.getValue()
 print("Inch Value: " + str(inch_value) + ' ' + str(inch_unit))
 # this should not raise an exception
-furlong = Units.ValueWithUnits(2,'furlongs',True)
+furlong = easyunits.ValueWithUnits(2,'furlongs',True)
 furlong_value, furlong_unit = furlong.getValue()
 print("Furlong Value: " + str(furlong_value) + ' ' + str(furlong_unit))
 # this should raise an exception
 try:
-    fortnight = Units.ValueWithUnits(3, 'fortnights')
-except Units.UnsuportedUnitError as error:
+    fortnight = easyunits.ValueWithUnits(3, 'fortnights')
+except easyunits.UnsuportedUnitError as error:
     print(error)
 
 
 ### converting
-inches = Units.ValueWithUnits(25.3, 'inches')
+inches = easyunits.ValueWithUnits(25.3, 'inches')
 mm = inches.convert('mm')
 inches_value, inches_units = inches.getValue()
 print(inches_value, inches_units, ' is ', mm, 'mm')
