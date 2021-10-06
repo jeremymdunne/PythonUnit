@@ -9,7 +9,7 @@
 #   In progress, use with caution
 #   Add functionality (specifically in conversion process) as the need arises
 
-from UnitConversion import *
+from Units import UnitConversion
 
 class UnsuportedUnitError(Exception):
     def __init__(self, unit):
@@ -67,7 +67,7 @@ class ValueWithUnits():
             self.unit = ''
         self.custom = custom
 
-    
+
 
     ##  Checks if the unit is in the supported types
     #   Raises UnsuportedUnitError if the unit is not found
@@ -125,7 +125,7 @@ class ValueWithUnits():
 
         #### English to Metric
         if target_unit == 'milimeters' or target_unit == 'mm':
-            return inchesToMilimeters(self.value)
+            return UnitConversion.inchesToMilimeters(self.value)
         if target_unit == 'centimeters' or target_unit == 'cm':
             return inchesToCentimeters(self.value)
         if target_unit == 'meters' or target_unit == 'm':
